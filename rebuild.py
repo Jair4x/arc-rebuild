@@ -1,40 +1,10 @@
 import os
-#import numpy
-#import heapq
-#from collections import Counter
-
-#numpy.seterr(all="ignore") # To ignore overflow warnings
 
 # Config
 HEADER = b"BURIKO ARC20"  # BGI/Ethornell's .arc files always start with this header in bytes.
 HEADER_SIZE = 12
 FILE_ENTRY_SIZE = 128  # 96 (name) + 4 (offset) + 4 (size) + 24 (padding)
 extracted_directory = "extracted"
-
-# Had to cut the compression of files, too much stuff to take care of.
-"""
-# Build the huffman tree to compress, just as BGI does.
-def build_tree(data):
-    freq = Counter(data)
-    heap = [[freq, [symbol, ""]] for symbol, freq in freq.items()]
-    heapq.heapify(heap)
-    while len(heap) > 1:
-        lo = heapq.heappop(heap)
-        hi = heapq.heappop(heap)
-        for pair in lo[1:]:
-            pair[1] = "0" + pair[1]
-        for pair in hi[1:]:
-            pair[1] = "1" + pair[1]
-        heapq.heappush(heap, [lo[0] + hi[0]] + lo[1:] + hi[1:])
-    return sorted(heapq.heappop(heap)[1:], key=lambda p: (len(p[-1]), p))
-
-def compress(data):
-    huffman_tree = build_tree(data)
-    huff_dict = {symbol: code for symbol, code in huffman_tree}
-    compressed_bits = "".join(huff_dict[byte] for byte in data)
-    compressed_bytes = int(compressed_bits, 2).to_bytes((len(compressed_bits) + 7) // 8, byteorder="big")
-    return compressed_bytes
-"""
 
 # Create the .arc file
 def create_arc(input_files, output_file):
@@ -89,7 +59,6 @@ def create_arc(input_files, output_file):
         for file_path in input_files:
             with open(file_path, "rb") as f:
                 raw_data = f.read()
-                #compressed_data = compress(raw_data)
                 arc_file.write(raw_data)
             print(f"File added: {file_path}")
 
@@ -152,5 +121,6 @@ def process_folder():
         raise FileNotFoundError(
             "No extension-less files or no sub-folders with extension-less files to process found in the 'extracted' folder."
         )
+
 
 process_folder()
