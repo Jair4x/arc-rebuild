@@ -27,14 +27,10 @@ __Make sure you have the original .arc file, for naming purposes.__ (little life
 
 - Sometimes, menu images and CGs you might want to edit are stored in `data025x0.arc`.
 
-- I strongly recommend you use [crskycode's fork of GARbro](https://github.com/crskycode/GARbro) to unpack the .arc files as well as [marcussacana's SacanaWrapper](https://github.com/marcussacana/SacanaWrapper) with the plugin for BGI files to work with the scenario scripts and make translation easier.
+- I strongly recommend you use [crskycode's (now nanami5270's) fork of GARbro](https://github.com/nanami5270/GARbro-Mod) to unpack the .arc files as well as [marcussacana's SacanaWrapper](https://github.com/marcussacana/SacanaWrapper) with the plugin for BGI files to work with the scenario scripts and make translation easier.
 
 ## TODO
-- ~~*Compression.*~~ Yeah, no. I tried remaking the huffman tree BGI uses and every time I tried it was like BGI said "Nuh UH" and crashed, so I won't keep trying.
-
-In all seriousness, BGI has some internal checks for these kinds of stuff, and I'm no expert on reverse engineering to figure out where or how does it work for now.
-
-Besides, I don't think the files would be *that* big, maybe compared to the originals it's gonna be like 500% bigger because of it having no compression, but going from 750kb to 5mb isn't that life changing, you know?
+- ~~*Compression.*~~ Yeah, no. The thing is, GARbro already decompresses the DSC files (the extensionless files you get), so trying to compress the files here would be dumb. I noticed this after almost a year of having created this tool (AKA right now, at the time of this commit, when reviewing the file). I'll work on DSC recompression using the decompression GARbro uses as a base, but I might or might not get it working. Expect this readme to change if I get it working or leave it as-is.
 
 ## Found a problem?/Have a suggestion?
 Create an Issue! I'll be happy to try and fix your problem or listen to your feedback.
