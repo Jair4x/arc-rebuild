@@ -3,7 +3,7 @@ A python script made to fix the annoying amount of files when making a translati
 ### What is this?/What does it do?
 ~~This is a python script that takes all the BGI/Ethornell files in a directory to repack a .arc file.~~
 
-This is now part of [BGI/Ethornell Tools](https://github.com/Jair4x/bgi-ethornell-tools), a collection of tools using Python for the BGI/Ethornell Engine.
+This is now part of [BGI/Ethornell Tools](https://github.com/Jair4x/ethornell-tools), a collection of tools using Python for the BGI/Ethornell Engine.
 That includes:
 
 - Extraction and rebuilding of .arc files
